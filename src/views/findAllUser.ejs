@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; padding: 2rem; color: #334155; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h2 { margin-bottom: 1.5rem; color: #1e293b; border-left: 4px solid #3b82f6; padding-left: 1rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th { background: #f1f5f9; text-align: left; padding: 12px; border-bottom: 2px solid #e2e8f0; }
+        td { padding: 12px; border-bottom: 1px solid #f1f5f9; }
+        .btn-edit { color: #3b82f6; text-decoration: none; margin-right: 10px; font-weight: 500; }
+        .btn-delete { color: #ef4444; text-decoration: none; font-weight: 500; }
+        .btn-edit:hover, .btn-delete:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Users List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i < dataTable.length; i++) { %>
+                    <tr>
+                        <td><%= dataTable[i].email %></td>
+                        <td><%= dataTable[i].firstName %></td>
+                        <td><%= dataTable[i].lastName %></td>
+                        <td><%= dataTable[i].address %></td>
+                        <td>
+                            <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn-edit">Edit</a>
+                            <a href="/delete-crud?id=<%= dataTable[i].id %>" class="btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
